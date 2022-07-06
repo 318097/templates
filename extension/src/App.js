@@ -37,7 +37,9 @@ const AppWrapper = () => (
 );
 
 const App = () => {
-  const [appVisibility, setAppVisibility] = useState(config.DEFAULT_STATE);
+  const [appVisibility, setAppVisibility] = useState(
+    config.DEFAULT_EXT_VISIBILITY_STATE
+  );
 
   const toggleState = () => setAppVisibility((prev) => !prev);
 

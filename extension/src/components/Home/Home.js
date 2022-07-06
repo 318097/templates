@@ -4,23 +4,37 @@ import { connect } from "react-redux";
 import classnames from "classnames";
 import "./Home.scss";
 import tracker from "../../lib/mixpanel";
+import { useHistory } from "react-router-dom";
 
-const Home = ({ data = [] }) => {
+const Home = ({ entityList = [] }) => {
+  const history = useHistory();
+
   return (
     <section id="home">
-      <div className="list-container">
-        {data.length ? (
-          <>{data.map((item) => {})}</>
-        ) : (
-          <div className="empty-message">Empty</div>
-        )}
-      </div>
+      {entityList.length ? (
+        <div className="list-container">
+          {entityList.map((item) => (
+            <DataItem key={item._id} item={item} />
+          ))}
+        </div>
+      ) : (
+        <div className="empty-message">Empty</div>
+      )}
     </section>
   );
 };
 
-// const mapStateToProps = (state) => {};
-// const mapDispatchToProps = {};
-// export default connect(mapStateToProps, mapDispatchToProps)(Home);
+const DataItem = ({ item }) => {
+  const { label, value } = item;
 
-export default Home;
+  return (
+    <div className="data-item">
+      <div>{label}</div>
+      <div>{value}</div>
+    </div>
+  );
+};
+
+const mapStateToProps = ({ entityList }) => ({ entityList });
+const mapDispatchToProps = {};
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

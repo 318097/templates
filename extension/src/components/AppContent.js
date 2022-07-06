@@ -14,13 +14,7 @@ import {
 import Header from "./Header";
 import Routes from "./Routes";
 import tracker from "../lib/mixpanel";
-import {
-  setSession,
-  setKey,
-  setAppLoading,
-  fetchEntityData,
-} from "../redux/actions";
-import { INITIAL_STATE } from "../redux/reducer";
+import { setSession, setKey, setAppLoading } from "../redux/actions";
 import config from "../config";
 import Footer from "./Footer";
 
@@ -31,7 +25,6 @@ const AppContent = ({
   activePage,
   session = {},
   appLoading,
-  fetchEntityData,
   toggleState,
 }) => {
   const history = useHistory();
@@ -45,11 +38,6 @@ const AppContent = ({
   useEffect(() => {
     save();
   }, [session, activePage]);
-
-  useEffect(() => {
-    if (!isAuthenticated) return;
-    fetchEntityData();
-  }, [isAuthenticated]);
 
   const isAccountActive = async (token) => {
     // try {
@@ -108,7 +96,11 @@ const AppContent = ({
     <Card className="app-content" hover={false}>
       <Header logout={logout} />
       <div className="fcc gap-8">
-        {config.isExtension && <button onClick={toggleState}>Close</button>}
+        {config.isExtension && (
+          <button className="close-button" onClick={toggleState}>
+            Close
+          </button>
+        )}
       </div>
       <div className="sec">
         {!initLoading && (
@@ -124,7 +116,7 @@ const AppContent = ({
         )}
       </div>
 
-      <Footer isAuthenticated={isAuthenticated} history={history} />
+      <Footer />
     </Card>
   );
 };
@@ -138,7 +130,6 @@ const mapDispatchToProps = {
   setAppLoading,
   setSession,
   setKey,
-  fetchEntityData,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppContent);

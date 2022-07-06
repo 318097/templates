@@ -1,6 +1,10 @@
 @import "@codedrops/react-ui/dist/styles/colors.scss";
 @import "@codedrops/react-ui/dist/styles/custom-styles.scss";
 
+.react-ui {
+  font-family: "Roboto Mono", monospace;
+}
+
 .application-container {
   position: relative;
   display: flex;
@@ -38,6 +42,11 @@
         font-weight: bold;
         font-size: 1rem;
       }
+    }
+    .close-button {
+      position: absolute;
+      top: 0;
+      right: 0;
     }
     .sec {
       padding: 8px 0;

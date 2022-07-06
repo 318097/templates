@@ -12,6 +12,9 @@ const Routes = ({ logout, appLoading, setAppLoading, setSession }) => (
     <Route exact path={`/settings`}>
       <Settings />
     </Route>
+    <Route exact>
+      <Home />
+    </Route>
   </Switch>
 );
 

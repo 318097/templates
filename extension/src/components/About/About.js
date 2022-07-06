@@ -75,9 +75,9 @@ const About = ({ appId, setAppLoading }) => {
             href="https://www.buymeacoffee.com/mehullakhanpal"
             target="__blank"
             className="link"
-            onClick={() =>
-              tracker.track("SUPPORT", { type: "Buy me a coffee" })
-            }
+            // onClick={() =>
+            //   tracker.track("SUPPORT", { type: "Buy me a coffee" })
+            // }
           >
             here
           </a>
@@ -96,7 +96,7 @@ const About = ({ appId, setAppLoading }) => {
               className="product-item"
               href={ctaUrl}
               target="_blank"
-              onClick={() => tracker.track("OTHER_PRODUCTS", { name })}
+              // onClick={() => tracker.track("OTHER_PRODUCTS", { name })}
             >
               <div className="product-title">{name}</div>
               <div className="product-description">{tagline}</div>

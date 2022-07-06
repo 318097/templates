@@ -15,7 +15,7 @@ const Navigation = ({ isAuthenticated }) => {
           activeClassName={"active-page"}
           className={`nav-item`}
           to={value}
-          onClick={() => tracker.track("NAVIGATION", { name: value })}
+          // onClick={() => tracker.track("NAVIGATION", { name: value })}
         >
           {label}
         </NavLink>
