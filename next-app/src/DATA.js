@@ -1,8 +1,7 @@
 const DATA = {
-  appId: "APP_ID",
-  appName: "App name",
-  tagline: "Tagline test",
-  description: "Description test",
+  appId: "<app_id>",
+  appName: "<app_name>",
+  tagline: "<app_tagline>",
   sponser: "https://www.buymeacoffee.com/mehullakhanpal",
 };
 

@@ -1,5 +1,6 @@
 import React from "react";
 import config from "../config";
+
 class Crisp extends React.Component {
   componentDidMount() {
     // Include the Crisp code here, without the <script></script> tags
