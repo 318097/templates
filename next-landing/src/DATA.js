@@ -1,25 +1,28 @@
-const PRODUCT_URLS = {
-  web: {
-    label: "Web app",
-    url: "https://www.test.com?utm_source=app_name_landing",
-  },
-  extension: {
-    label: "Chrome extension",
-    url: "https://www.test.com?utm_source=app_name_landing",
-  },
+import config from "./config";
+
+const localConfig = {
+  TAGLINE: "<APP_TAGLINE>",
+  DESCRIPTION: "<APP_DESCRIPTION>",
+};
+
+const CTA = {
+  label: "Chrome extension",
+  url: `https://www.test.com?utm_source=${config.APP_ID.toLowerCase()}_landing`,
 };
 
 const DATA = {
-  appId: "APP_ID",
-  appName: "App name",
-  tagline: "Tagline test",
-  description: "Description test",
-  // previewURL: "https://cdn.devdojo.com/images/november2020/hero-image.jpeg",
-  previewURL: "/assets/preview.png",
-  webAppURL: PRODUCT_URLS.web.url,
-  extensionURL: PRODUCT_URLS.extension.url,
-  videoURL: "https://youtube.com/embed/<video_id>",
-  sponser: "https://www.buymeacoffee.com/mehullakhanpal",
+  appId: config.APP_ID,
+  appName: config.APP_NAME,
+  tagline: localConfig.TAGLINE,
+  description: localConfig.DESCRIPTION,
+  cta: CTA,
+  fontFamily: "Manrope",
+  urls: {
+    // url: "/assets/preview.png", // Full URL or /assets/<FILE_NAME>
+    url: "https://picsum.photos/300/500", // Full URL or /assets/<FILE_NAME>
+    video: `https://youtube.com/embed/${config.YOUTUBE.VIDEO_ID}`,
+    sponser: `https://www.buymeacoffee.com/${config.BMC}`,
+  },
   carousel: {
     list: [
       {
@@ -29,13 +32,13 @@ const DATA = {
     ],
   },
   features: {
-    subTitle: "<title>",
+    subTitle: "<feature_title>",
     list: [
       {
         id: 1,
         iconType: "robot",
-        title: "<placeholder>",
-        description: `<placeholder>`,
+        title: "<Feature 1>",
+        description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.`,
       },
     ],
   },
@@ -47,7 +50,7 @@ const DATA = {
         title: "Chrome extension",
         src: "/assets/chrome-extension.png",
         description: "<placeholder>",
-        ctaHref: PRODUCT_URLS.extension.url,
+        ctaHref: CTA.url,
         ctaLabel: "Download",
         points: [
           {
@@ -61,7 +64,7 @@ const DATA = {
 };
 
 const getMenu = ({ src } = {}) => {
-  const { platforms, features, videoURL, carousel } = DATA;
+  const { platforms, features, urls, carousel } = DATA;
   return [
     { label: "Intro", value: "intro", renderComponent: true, showInNav: true },
     {
@@ -85,7 +88,7 @@ const getMenu = ({ src } = {}) => {
     {
       label: "Demo",
       value: "demo",
-      renderComponent: !!videoURL,
+      renderComponent: !!urls.video,
       showInNav: true,
     },
   ]

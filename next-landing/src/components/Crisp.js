@@ -4,7 +4,7 @@ class Crisp extends React.Component {
   componentDidMount() {
     // Include the Crisp code here, without the <script></script> tags
     window.$crisp = [];
-    window.CRISP_WEBSITE_ID = config.CRISP_WEBSITE_ID;
+    window.CRISP_WEBSITE_ID = this.props.CRISP_WEBSITE_ID;
 
     (function () {
       var d = document;

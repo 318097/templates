@@ -1,5 +1,5 @@
 import DATA from "../DATA";
-const { videoURL } = DATA;
+const { urls } = DATA;
 
 export default function Demo() {
   const classes = {
@@ -7,7 +7,7 @@ export default function Demo() {
   };
   return (
     <section id="demo" className={classes.wrapper}>
-      <iframe width={"100%"} height={"400px"} src={videoURL}></iframe>
+      <iframe width={"100%"} height={"400px"} src={urls.video}></iframe>
     </section>
   );
 }

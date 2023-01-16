@@ -14,12 +14,14 @@ import dynamic from "next/dynamic";
 const CrispWithNoSSR = dynamic(() => import("../components/Crisp"), {
   ssr: false,
 });
-import data, { getMenu } from "../DATA";
-const { tagline, appName } = data;
 
-export default function Home() {
+import data, { getMenu } from "../DATA";
+
+const { tagline, appName, fontFamily } = data;
+
+export default function Index() {
   return (
-    <div>
+    <Fragment>
       <Head>
         <title>{appName}</title>
         <meta name="description" content={tagline} />
@@ -27,30 +29,13 @@ export default function Home() {
         <link
           rel="stylesheet"
           type="text/css"
-          href="https://fonts.googleapis.com/css?family=Roboto Mono"
+          href={`https://fonts.googleapis.com/css?family=${fontFamily}`}
           media="all"
         />
-        {/* {config.IS_PROD && (
-          <Fragment>
-            <script
-              async
-              src="https://www.googletagmanager.com/gtag/js?id=<GOOGLE_TAG_ID>"
-            ></script>
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '<GOOGLE_TAG_ID>');
-            `,
-              }}
-            />
-          </Fragment>
-        )} */}
+        {config.IS_PROD && <GA GA_ID={config.GA_ID} />}
       </Head>
-      <main style={{ fontFamily: "Roboto Mono" }}>
-        {config.IS_PROD && <CrispWithNoSSR />}
+
+      <main style={{ fontFamily }}>
         <Header />
         {getMenu().map((item) => {
           const key = item.value;
@@ -73,6 +58,9 @@ export default function Home() {
         })}
       </main>
       <Footer />
-    </div>
+      {config.IS_PROD && (
+        <CrispWithNoSSR CRISP_WEBSITE_ID={config.CRISP_WEBSITE_ID} />
+      )}
+    </Fragment>
   );
 }

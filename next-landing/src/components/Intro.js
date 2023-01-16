@@ -1,7 +1,7 @@
 import DATA from "../DATA";
 // import Image from "next/image";
 import { Button } from "../lib/tailwind";
-const { description, tagline, previewURL, webAppURL, extensionURL } = DATA;
+const { description, tagline, urls, cta } = DATA;
 
 export default function Intro() {
   const classes = {
@@ -36,14 +36,11 @@ export default function Intro() {
           <h1 className={classes.tagline}>{tagline}</h1>
           <p className={classes.description}>{description}</p>
           <div className={classes.buttonWrapper}>
-            <Button href={extensionURL}>Download extension</Button>
-            <Button href={webAppURL} variant="default">
-              Try web app
-            </Button>
+            <Button href={cta.url}>{cta.label}</Button>
           </div>
         </div>
         <div className={classes.imageWrapper}>
-          <img src={previewURL} className="" />
+          <img src={urls.preview} className="" />
         </div>
       </div>
     </section>

@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import _ from "lodash";
 import DATA from "../DATA";
-const { appName, tagline, sponser, showAboutPage, showOtherProducts } = DATA;
+const { appName, tagline, urls, showAboutPage, showOtherProducts } = DATA;
 
 const getCopyright = () =>
   `© ${new Date().getFullYear()} ${appName} - ${tagline}`;
@@ -66,7 +66,7 @@ export default function Footer({ otherProducts = [] }) {
         )}
 
         <div className={classes.row2}>
-          <a href={sponser} target="_blank" className={classes.link}>
+          <a href={urls.sponser} target="_blank" className={classes.link}>
             Sponser
           </a>
         </div>
