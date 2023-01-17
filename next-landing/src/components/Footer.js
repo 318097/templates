@@ -1,7 +1,10 @@
 import { Fragment } from "react";
 import _ from "lodash";
 import DATA from "../DATA";
-const { appName, tagline, urls, showAboutPage, showOtherProducts } = DATA;
+import { getIcon } from "../lib/icons";
+
+const { appName, tagline, urls, socialLinks, showOtherProducts, footerLinks } =
+  DATA;
 
 const getCopyright = () =>
   `© ${new Date().getFullYear()} ${appName} - ${tagline}`;
@@ -9,6 +12,7 @@ const getCopyright = () =>
 export default function Footer({ otherProducts = [] }) {
   const classes = {
     container: `
+    footer-main
       flex 
       flex-col
       items-center
@@ -24,22 +28,21 @@ export default function Footer({ otherProducts = [] }) {
       text-gray-500
       sm:ml-4
       sm:pl-4 
-      sm:border-l 
-      sm:border-gray-200 
       sm:mt-0
     `,
     productContainer: "flex items-center md:gap-1 flex-wrap justify-center",
-    row2: "flex items-center gap-1",
+    row2: "flex items-center gap-2 p-1",
     link: "text-sm text-gray-500",
+    socialIcon: "",
   };
 
   return (
     <footer className="bg-slate-50">
-      <div id="footer-wrapper" className={classes.container}>
+      <div className={classes.container}>
         <div className={classes.row1}>
-          <a href="#_" className={classes.appName}>
+          {/* <a href="#_" className={classes.appName}>
             {appName}
-          </a>
+          </a> */}
           <p className={classes.copyright}>{getCopyright()}</p>
         </div>
 
@@ -66,9 +69,26 @@ export default function Footer({ otherProducts = [] }) {
         )}
 
         <div className={classes.row2}>
-          <a href={urls.sponser} target="_blank" className={classes.link}>
-            Sponser
-          </a>
+          {footerLinks.map((link, idx) => (
+            <Fragment key={link.key}>
+              {idx > 0 && idx < footerLinks.length && <span>•</span>}
+              <a target="_blank" href={link.href} className={classes.link}>
+                {link.label}
+              </a>
+            </Fragment>
+          ))}
+        </div>
+        <div className={classes.row2}>
+          {socialLinks.map((social) => (
+            <a
+              key={social.key}
+              target="_blank"
+              href={social.value}
+              className={classes.socialIcon}
+            >
+              {getIcon({ type: social.key })}
+            </a>
+          ))}
         </div>
       </div>
     </footer>

@@ -38,7 +38,6 @@ const DATA = {
     // preview: "/assets/preview.png", // Full URL or /assets/<FILE_NAME>
     preview: "https://picsum.photos/300/500", // Full URL or /assets/<FILE_NAME>
     video: `https://youtube.com/embed/${config.YOUTUBE.VIDEO_ID}`,
-    sponser: `https://www.buymeacoffee.com/${config.BMC}`,
   },
   carousel: {
     list: [
@@ -78,6 +77,16 @@ const DATA = {
     ],
   },
   showOtherProducts: false,
+  footerLinks: [
+    {
+      label: "Sponser",
+      href: `https://www.buymeacoffee.com/${config.BMC}`,
+    },
+  ],
+  socialLinks: [
+    { key: "twitter", value: "" },
+    { key: "email", value: "" },
+  ],
 };
 
 const getMenu = ({ src } = {}) => {

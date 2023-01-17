@@ -2,7 +2,8 @@ import { MdOutlineAutorenew } from "react-icons/md";
 import { AiFillRobot } from "react-icons/ai";
 import { BiTimeFive } from "react-icons/bi";
 import { CgSandClock } from "react-icons/cg";
-import { BsCheck } from "react-icons/bs";
+import { BsCheck, BsTwitter } from "react-icons/bs";
+import { TfiEmail, TfiTwitterAlt, TfiLinkedin } from "react-icons/tfi";
 
 const getIcon = ({ type }) => {
   switch (type) {
@@ -16,6 +17,14 @@ const getIcon = ({ type }) => {
       return <CgSandClock />;
     case "check":
       return <BsCheck />;
+    case "twitter":
+      return <TfiTwitterAlt />;
+    case "email":
+      return <TfiEmail />;
+    case "linkedin":
+      return <TfiLinkedin />;
+    default:
+      return null;
   }
 };
 
