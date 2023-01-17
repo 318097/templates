@@ -1,10 +1,10 @@
-import DATA, { getMenuLabel } from "../../DATA";
+import DATA, { getMenuItemMeta } from "../../DATA";
 import { getIcon } from "../../lib/icons";
 import { Heading, Button } from "../../lib/tailwind";
 const { platforms } = DATA;
 const { list = [] } = platforms;
 
-const { label } = getMenuLabel("general");
+const { label } = getMenuItemMeta("general");
 
 export default function General() {
   return (

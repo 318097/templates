@@ -1,39 +1,67 @@
 import { Heading } from "../../lib/tailwind";
-import DATA, { getMenuLabel } from "../../DATA";
+import DATA, { theme, getMenuItemMeta } from "../../DATA";
+import { getIcon } from "../../lib/icons";
+import styled from "styled-components";
+
 const { features } = DATA;
 const { subTitle, list = [] } = features;
-import { getIcon } from "../../lib/icons";
-import cn from "classnames";
+const { label } = getMenuItemMeta("features");
 
-const { label } = getMenuLabel("features");
+const StyledFeatures = styled.div`
+  .features-container {
+    display: grid;
+    grid-template-columns: repeat(3, 320px);
+    gap: 16px;
+    justify-content: center;
+    .feature-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 36px 16px;
+      background: whitesmoke;
+      border-radius: 2px;
+      flex: 0 0 240px;
+      height: 380px;
+      gap: 16px;
+      .icon {
+        padding: 12px;
+        color: white;
+        background: ${theme.primary};
+        border-radius: 50%;
+        font-size: 1.8rem;
+      }
+      .title {
+        font-size: 1.2rem;
+        text-align: center;
+        line-height: normal;
+        font-weight: bold;
+      }
+      .description {
+        font-size: 0.9rem;
+      }
+    }
+  }
+`;
 
 export default function Features() {
-  const classes = {
-    listContainer: cn(
-      "grid gap-8 grid-cols-1 max-w-3xl mx-auto",
-      list.length === 4 ? "sm:grid-cols-8" : "sm:grid-cols-12"
-    ),
-    listItem:
-      "flex flex-col items-center col-span-4 px-8 py-12 space-y-4 overflow-hidden bg-gray-100 rounded-sm",
-    icon: "p-3 text-white bg-primary rounded-sm text-2xl",
-    listItemTitle: "text-xl font-medium text-gray-700",
-    listItemDescription: "text-base text-center text-gray-500 h-28",
-  };
-
   return (
-    <div className="section-main">
+    <StyledFeatures className="section-main">
       <Heading title={label} subTitle={subTitle} />
-      <div className={classes.listContainer}>
+      <div className="features-container">
         {list.map(({ title, description, id, iconType }) => {
           return (
-            <div key={id} className={classes.listItem}>
-              <div className={classes.icon}>{getIcon({ type: iconType })}</div>
-              <h4 className={classes.listItemTitle}>{title}</h4>
-              <p className={classes.listItemDescription}>{description}</p>
+            <div key={id} className="feature-item">
+              <div className="icon">{getIcon({ type: iconType })}</div>
+              <h4 className="title">{title}</h4>
+              <p
+                className="description"
+                dangerouslySetInnerHTML={{ __html: description }}
+              />
             </div>
           );
         })}
       </div>
-    </div>
+    </StyledFeatures>
   );
 }

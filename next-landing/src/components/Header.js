@@ -10,6 +10,12 @@ const StyledHeader = styled.header`
   top: 0;
   box-shadow: 0px 6px 4px 0px whitesmoke;
   background: white;
+  .app-name {
+    padding: 4px 8px;
+    gap: 2px;
+    font-weight: bold;
+    font-size: 1.6rem;
+  }
 `;
 
 const classes = {
