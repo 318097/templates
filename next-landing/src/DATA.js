@@ -3,6 +3,12 @@ import config from "./config";
 const localConfig = {
   TAGLINE: "<APP_TAGLINE>",
   DESCRIPTION: "<APP_DESCRIPTION>",
+  MODULES: {
+    FEATURES: true,
+    CAROUSEL: true,
+    PLATFORMS: false,
+    DEMO: true,
+  },
 };
 
 const CTA = {
@@ -16,10 +22,10 @@ const DATA = {
   tagline: localConfig.TAGLINE,
   description: localConfig.DESCRIPTION,
   cta: CTA,
-  fontFamily: "Manrope",
+  fontFamily: "Manrope", // Font family from 'Google Fonts'
   urls: {
-    // url: "/assets/preview.png", // Full URL or /assets/<FILE_NAME>
-    url: "https://picsum.photos/300/500", // Full URL or /assets/<FILE_NAME>
+    // preview: "/assets/preview.png", // Full URL or /assets/<FILE_NAME>
+    preview: "https://picsum.photos/300/500", // Full URL or /assets/<FILE_NAME>
     video: `https://youtube.com/embed/${config.YOUTUBE.VIDEO_ID}`,
     sponser: `https://www.buymeacoffee.com/${config.BMC}`,
   },
@@ -65,37 +71,38 @@ const DATA = {
 
 const getMenu = ({ src } = {}) => {
   const { platforms, features, urls, carousel } = DATA;
+  const { FEATURES, CAROUSEL, PLATFORMS, DEMO } = localConfig.MODULES;
   return [
     { label: "Intro", value: "intro", renderComponent: true, showInNav: true },
     {
       label: "Features",
       value: "features",
-      renderComponent: features && features.list,
+      renderComponent: FEATURES && features?.list,
       showInNav: true,
     },
     {
       label: "Carousel",
       value: "carousel",
-      renderComponent: carousel && carousel.list,
+      renderComponent: CAROUSEL && carousel?.list,
       showInNav: false,
     },
     {
       label: "Platforms",
       value: "general",
-      renderComponent: platforms && platforms.list,
+      renderComponent: PLATFORMS && platforms?.list,
       showInNav: true,
     },
     {
       label: "Demo",
       value: "demo",
-      renderComponent: !!urls.video,
+      renderComponent: DEMO && !!urls?.video,
       showInNav: true,
     },
-  ]
-    .filter((menu) => menu.renderComponent)
-    .filter((menu) => (src === "nav" ? menu.showInNav : true));
+  ].filter((menu) => {
+    const isVisible = menu.renderComponent;
+    return src === "nav" ? isVisible && menu.showInNav : isVisible;
+  });
 };
-
 const getMenuLabel = (value) =>
   getMenu().find((menu) => menu.value === value) || {};
 
