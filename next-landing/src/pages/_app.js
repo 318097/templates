@@ -1,4 +1,4 @@
-import "../styles/globals.css";
+import "../styles/globals.scss";
 import "./index.scss";
 
 function MyApp({ Component, pageProps }) {
@@ -6,4 +6,3 @@ function MyApp({ Component, pageProps }) {
 }
 
 export default MyApp;
-

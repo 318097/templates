@@ -1,5 +1,5 @@
 {
-  "name": "<APP_NAME>",
+  "name": "app-name",
   "private": true,
   "scripts": {
     "dev": "PORT=9001 next dev",

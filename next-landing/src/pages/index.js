@@ -20,6 +20,8 @@ import data, { getMenu } from "../DATA";
 const { tagline, appName, fontFamily } = data;
 
 export default function Index() {
+  const MENU = getMenu();
+
   return (
     <Fragment>
       <Head>
@@ -37,7 +39,7 @@ export default function Index() {
 
       <main style={{ fontFamily }}>
         <Header />
-        {getMenu().map((item) => {
+        {MENU.map((item) => {
           const key = item.value;
           switch (key) {
             case "intro":
