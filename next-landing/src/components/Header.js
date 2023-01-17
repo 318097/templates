@@ -1,5 +1,16 @@
 import DATA, { getMenu } from "../DATA";
-const { appName } = DATA;
+import styled from "styled-components";
+const { appName, cta } = DATA;
+import cn from "classnames";
+import { Button } from "../lib/tailwind";
+
+const StyledHeader = styled.header`
+  width: 100%;
+  position: sticky;
+  top: 0;
+  box-shadow: 0px 6px 4px 0px whitesmoke;
+  background: white;
+`;
 
 const classes = {
   headerWrapper: `
@@ -48,26 +59,27 @@ const classes = {
 
 export default function Header() {
   return (
-    <header className={classes.headerWrapper}>
-      <a href="#" className={classes.appName}>
-        {appName}
-      </a>
+    <StyledHeader>
+      <div className={cn(classes.headerWrapper, "header-main")}>
+        <a href="#" className={classes.appName}>
+          {appName}
+        </a>
 
-      <nav className={classes.nav}>
-        {getMenu({ src: "nav" }).map((item) => {
-          return (
-            <a
-              key={item.value}
-              href={`#${item.value}`}
-              className={classes.navItem}
-            >
-              <span className="block">{item.label}</span>
-            </a>
-          );
-        })}
-      </nav>
+        <nav className={classes.nav}>
+          {getMenu({ src: "nav" }).map((menuItem) => {
+            return (
+              <a
+                key={menuItem.key}
+                href={`#${menuItem.key}`}
+                className={classes.navItem}
+              >
+                <span className="block">{menuItem.label}</span>
+              </a>
+            );
+          })}
+        </nav>
 
-      {/* <div
+        <div
           className="
             relative
             z-10
@@ -78,30 +90,9 @@ export default function Header() {
             lg:justify-end
           "
         >
-          <a
-            href="#"
-            className="
-              inline-flex
-              items-center
-              justify-center
-              px-4
-              py-2
-              text-base
-              font-medium
-              leading-6
-              text-gray-600
-              whitespace-no-wrap
-              bg-white
-              border border-gray-200
-              shadow-sm
-              hover:bg-gray-50
-              focus:outline-none focus:shadow-none
-              rounded-none rounded-sm
-            "
-          >
-            Sign in
-          </a>
-        </div> */}
-    </header>
+          <Button href={cta.url}>{cta.label}</Button>
+        </div>
+      </div>
+    </StyledHeader>
   );
 }

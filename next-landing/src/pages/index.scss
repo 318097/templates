@@ -25,12 +25,19 @@ h2 {
 }
 
 section {
-  // border: 1px solid black;
-  @apply px-2 py-12 md:px-1;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .section-main {
+    @apply px-2 py-12 md:px-1;
+
+    width: 100%;
+  }
 }
 
-header,
-section,
+header .header-main,
+section .section-main,
 footer#footer-wrapper {
   @apply mx-auto max-w-screen-lg;
 }

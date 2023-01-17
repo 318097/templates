@@ -1,6 +1,6 @@
 export default function Subscribe() {
   return (
-    <section className="py-8 leading-7 text-gray-900 bg-white sm:py-12 md:py-16 lg:py-24">
+    <div className="section-main">
       <div className="max-w-6xl px-4 px-10 mx-auto border-solid lg:px-12">
         <div
           className="
@@ -86,6 +86,6 @@ export default function Subscribe() {
           </a>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

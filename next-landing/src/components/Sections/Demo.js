@@ -1,4 +1,4 @@
-import DATA from "../DATA";
+import DATA from "../../DATA";
 const { urls } = DATA;
 
 export default function Demo() {
@@ -6,8 +6,8 @@ export default function Demo() {
     wrapper: "flex justify-center max-w-screen-md",
   };
   return (
-    <section id="demo" className={classes.wrapper}>
+    <div className="section-main">
       <iframe width={"100%"} height={"400px"} src={urls.video}></iframe>
-    </section>
+    </div>
   );
 }

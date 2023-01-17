@@ -1,11 +1,11 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
-import data from "../DATA";
+import data from "../../DATA";
 const { carousel = {} } = data;
 
 export default function CarouselComponent() {
   return (
-    <section id="carousel" className="">
+    <div className="section-main">
       <Carousel autoPlay={true} infiniteLoop={true}>
         {carousel.list.map(({ path, legend }, idx) => (
           <div className="" key={idx}>
@@ -14,6 +14,6 @@ export default function CarouselComponent() {
           </div>
         ))}
       </Carousel>
-    </section>
+    </div>
   );
 }

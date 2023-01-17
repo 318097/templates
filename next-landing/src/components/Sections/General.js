@@ -1,6 +1,6 @@
-import DATA, { getMenuLabel } from "../DATA";
-import { getIcon } from "../lib/icons";
-import { Heading, Button } from "../lib/tailwind";
+import DATA, { getMenuLabel } from "../../DATA";
+import { getIcon } from "../../lib/icons";
+import { Heading, Button } from "../../lib/tailwind";
 const { platforms } = DATA;
 const { list = [] } = platforms;
 
@@ -8,17 +8,17 @@ const { label } = getMenuLabel("general");
 
 export default function General() {
   return (
-    <section id="general">
+    <div className="section-main">
       <Heading title={label} />
       <div className="flex flex-col gap-8">
-        <Section {...list[0]} />
-        <Section {...list[1]} direction="reverse" />
+        <SubSections {...list[0]} />
+        <SubSections {...list[1]} direction="reverse" />
       </div>
-    </section>
+    </div>
   );
 }
 
-const Section = ({
+const SubSections = ({
   src,
   title,
   description,

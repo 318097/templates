@@ -1,8 +1,8 @@
-import { Heading } from "../lib/tailwind";
-import DATA, { getMenuLabel } from "../DATA";
+import { Heading } from "../../lib/tailwind";
+import DATA, { getMenuLabel } from "../../DATA";
 const { features } = DATA;
 const { subTitle, list = [] } = features;
-import { getIcon } from "../lib/icons";
+import { getIcon } from "../../lib/icons";
 import cn from "classnames";
 
 const { label } = getMenuLabel("features");
@@ -21,7 +21,7 @@ export default function Features() {
   };
 
   return (
-    <section id="features">
+    <div className="section-main">
       <Heading title={label} subTitle={subTitle} />
       <div className={classes.listContainer}>
         {list.map(({ title, description, id, iconType }) => {
@@ -34,6 +34,6 @@ export default function Features() {
           );
         })}
       </div>
-    </section>
+    </div>
   );
 }

@@ -11,6 +11,17 @@ const localConfig = {
   },
 };
 
+const COLOR_PALETTE = [
+  { primary: "#39D754", background: "#DCFCE7" },
+  { primary: "#F9587B", background: "#FFE2E6" },
+  { primary: "#BE82FE", background: "#F4E8FF" },
+  { primary: "#FE937A", background: "#FFF4DE" },
+];
+
+const THEME = {
+  primary: "#f56545",
+};
+
 const CTA = {
   label: "Chrome extension",
   url: `https://www.test.com?utm_source=${config.APP_ID.toLowerCase()}_landing`,
@@ -72,39 +83,55 @@ const DATA = {
 const getMenu = ({ src } = {}) => {
   const { platforms, features, urls, carousel } = DATA;
   const { FEATURES, CAROUSEL, PLATFORMS, DEMO } = localConfig.MODULES;
-  return [
-    { label: "Intro", value: "intro", renderComponent: true, showInNav: true },
+
+  const SECTIONS = [
+    { label: "Intro", key: "intro", renderComponent: true, showInNav: true },
     {
       label: "Features",
-      value: "features",
+      key: "features",
       renderComponent: FEATURES && features?.list,
       showInNav: true,
+      useTheme: true,
     },
     {
       label: "Carousel",
-      value: "carousel",
+      key: "carousel",
       renderComponent: CAROUSEL && carousel?.list,
       showInNav: false,
     },
     {
       label: "Platforms",
-      value: "general",
+      key: "general",
       renderComponent: PLATFORMS && platforms?.list,
       showInNav: true,
     },
     {
       label: "Demo",
-      value: "demo",
+      key: "demo",
       renderComponent: DEMO && !!urls?.video,
       showInNav: true,
     },
-  ].filter((menu) => {
-    const isVisible = menu.renderComponent;
-    return src === "nav" ? isVisible && menu.showInNav : isVisible;
+    {
+      label: "Subscribe",
+      key: "subscribe",
+      renderComponent: true,
+      showInNav: true,
+    },
+  ];
+
+  return SECTIONS.map((menuItem, idx) => {
+    const theme = COLOR_PALETTE[idx % COLOR_PALETTE.length];
+    return {
+      ...menuItem,
+      theme,
+    };
+  }).filter((menuItem) => {
+    const isVisible = menuItem.renderComponent;
+    return src === "nav" ? isVisible && menuItem.showInNav : isVisible;
   });
 };
-const getMenuLabel = (value) =>
-  getMenu().find((menu) => menu.value === value) || {};
+const getMenuLabel = (key) =>
+  getMenu().find((menuItem) => menuItem.key === key) || {};
 
 export { getMenu, getMenuLabel };
 
