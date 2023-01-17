@@ -25,13 +25,12 @@ h2 {
 }
 
 section {
-  min-height: 90vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   .section-main {
     @apply px-2 py-12 md:px-1;
-
     width: 100%;
   }
 }

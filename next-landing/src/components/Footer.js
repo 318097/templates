@@ -50,7 +50,7 @@ export default function Footer({ otherProducts = [] }) {
           <div className={classes.productContainer}>
             <span className="text-sm font-black">Other apps - </span>
             {otherProducts.map(({ name, links, tagline }, idx) => (
-              <Fragment key={idx}>
+              <Fragment key={name}>
                 <a
                   title={tagline}
                   className="text-sm text-gray-500"
