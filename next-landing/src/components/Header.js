@@ -1,8 +1,9 @@
 import DATA, { getMenu } from "../DATA";
 import styled from "styled-components";
-const { appName, cta } = DATA;
 import cn from "classnames";
 import { Button } from "../lib/tailwind";
+
+const { appName, cta, showLogo = true } = DATA;
 
 const StyledHeader = styled.header`
   width: 100%;
@@ -11,9 +12,17 @@ const StyledHeader = styled.header`
   z-index: 100;
   box-shadow: 0px 6px 4px 0px whitesmoke;
   background: whitesmoke;
-  .app-name {
-    font-weight: bold;
-    font-size: 1.6rem;
+  .app-name-container {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    img {
+      height: 28px;
+    }
+    .app-name {
+      font-weight: bold;
+      font-size: 1.6rem;
+    }
   }
 `;
 
@@ -51,9 +60,12 @@ export default function Header() {
   return (
     <StyledHeader>
       <div className={cn(classes.headerWrapper, "header-main")}>
-        <a href="#" className="app-name">
-          {appName}
-        </a>
+        <span className="app-name-container">
+          {showLogo && <img className="logo" src="/assets/logo.svg" />}
+          <a href="#" className="app-name">
+            {appName}
+          </a>
+        </span>
 
         <nav className={classes.nav}>
           {getMenu({ src: "nav" }).map((menuItem) => {

@@ -37,6 +37,7 @@ const DATA = {
   appName: config.APP_NAME,
   tagline: localConfig.TAGLINE,
   description: localConfig.DESCRIPTION,
+  showLogo: true,
   cta: CTA,
   fontFamily: "Manrope", // Font family from 'Google Fonts'
   urls: {
