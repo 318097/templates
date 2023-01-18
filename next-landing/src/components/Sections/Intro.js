@@ -11,7 +11,8 @@ export default function Intro() {
       flex
       flex-col
       align-center
-      gap-4
+      gap-2
+      md:gap-4
     `,
     tagline: `
     font-extrabold

@@ -1,8 +1,8 @@
 import config from "./config";
 
 const localConfig = {
-  TAGLINE: "<APP_TAGLINE>",
-  DESCRIPTION: "<APP_DESCRIPTION>",
+  TAGLINE: "Power shortcuts for managing tabs",
+  DESCRIPTION: "Manage & switch infinite in seconds",
   MODULES: {
     FEATURES: true,
     CAROUSEL: true,
@@ -18,12 +18,17 @@ const COLOR_PALETTE = [
   { primary: "#FE937A", background: "#FFF4DE" },
 ];
 
-const THEME = {
+const theme = {
   primary: "#f56545",
+  padding: "24px",
+  contentWidth: "600px",
+  breakpoints: {
+    md: "500px",
+  },
 };
 
 const CTA = {
-  label: "Chrome extension",
+  label: "Add to Chrome",
   url: `https://www.test.com?utm_source=${config.APP_ID.toLowerCase()}_landing`,
 };
 
@@ -42,19 +47,56 @@ const DATA = {
   carousel: {
     list: [
       {
-        path: "/assets/<name>.png",
-        legend: "<description>",
+        path: "https://picsum.photos/500/300",
+        legend: "Description 1",
+      },
+      {
+        path: "https://picsum.photos/500/300",
+        legend: "Description 2",
+      },
+      {
+        path: "https://picsum.photos/500/300",
+        legend: "Description 3",
       },
     ],
   },
   features: {
-    subTitle: "<feature_title>",
+    renderStyle: "LIST", // LIST* | CARD
+    subTitle: "",
     list: [
       {
         id: 1,
         iconType: "robot",
-        title: "<Feature 1>",
-        description: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.`,
+        title: "Switch to URLs using hotkeys",
+        description: `
+Switch to an existing URL or open the URL in a new tab with 2 keystrokes.
+1. Open **Quick Switch** window using Alt/Option+J'
+2.  Navigate to that tab by pressing the defined hotkey
+`,
+      },
+      {
+        id: 2,
+        iconType: "automatic",
+        title: "Cycle between same domains",
+        description: `Switch between domains have the same URL using the keyboard shortcut 'Alt/Option+Shift+K'  ex., If there are 3 tabs with the same domain(google.com) open in your window, use the shortcut to cycle between these tabs`,
+      },
+      {
+        id: 3,
+        iconType: "time",
+        title: "Cycle between favorite URLs",
+        description: `You can mark a URL as favorite when creating a new shortcut from **‘Add shortcut’** page Once marked as favorite, press 'Alt/Option+K' to cycle between all the favorite URLs that are open in your window`,
+      },
+      {
+        id: 4,
+        iconType: "timeline",
+        title: "Sort tabs alphabetically by URL",
+        description: `Press 'Alt/Option+Shift+J' to sort all your tabs in alphabetical order`,
+      },
+      {
+        id: 5,
+        iconType: "timeline",
+        title: "View all tabs from your window",
+        description: `Go to ‘Tabs’ menu to see all the tabs from current window. Click to switch to that tab.`,
       },
     ],
   },
@@ -80,6 +122,7 @@ const DATA = {
   footerLinks: [
     {
       label: "Sponser",
+      key: "sponser",
       href: `https://www.buymeacoffee.com/${config.BMC}`,
     },
   ],
@@ -94,19 +137,28 @@ const getMenu = ({ src } = {}) => {
   const { FEATURES, CAROUSEL, PLATFORMS, DEMO } = localConfig.MODULES;
 
   const SECTIONS = [
-    { label: "Intro", key: "intro", renderComponent: true, showInNav: true },
+    {
+      label: "Intro",
+      key: "intro",
+      renderComponent: true,
+      showInNav: true,
+      size: "FULL", // FULL* | MAX
+      themeType: "WHITE", // WHITE* | COLOR | GRAY
+    },
     {
       label: "Features",
       key: "features",
       renderComponent: FEATURES && features?.list,
       showInNav: true,
-      useTheme: true,
+      size: "FULL",
+      themeType: "COLOR",
     },
     {
       label: "Carousel",
       key: "carousel",
       renderComponent: CAROUSEL && carousel?.list,
       showInNav: false,
+      themeType: "GRAY",
     },
     {
       label: "Platforms",
@@ -125,6 +177,8 @@ const getMenu = ({ src } = {}) => {
       key: "subscribe",
       renderComponent: true,
       showInNav: true,
+      themeType: "COLOR",
+      size: "MAX",
     },
   ];
 
@@ -139,9 +193,10 @@ const getMenu = ({ src } = {}) => {
     return src === "nav" ? isVisible && menuItem.showInNav : isVisible;
   });
 };
-const getMenuLabel = (key) =>
+
+const getMenuItemMeta = (key) =>
   getMenu().find((menuItem) => menuItem.key === key) || {};
 
-export { getMenu, getMenuLabel };
+export { getMenu, getMenuItemMeta, theme };
 
 export default DATA;

@@ -9,11 +9,11 @@ const config = {
   IS_DEV: NODE_ENV === "development",
   IS_PROD: NODE_ENV === "production",
   CRISP_WEBSITE_ID,
-  APP_ID: "<APP_ID>",
-  APP_NAME: "<APP_NAME>",
+  APP_ID: "QUICK_SWITCH",
+  APP_NAME: "Quick Switch",
   GA_ID: GOOGLE_ANALYTICS_TRACKING_ID,
   YOUTUBE: {
-    VIDEO_ID: "",
+    VIDEO_ID: "NvD6Cv4PiTc",
   },
   BMC: "mehullakhanpal",
 };

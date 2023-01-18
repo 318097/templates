@@ -12,8 +12,6 @@ const StyledHeader = styled.header`
   box-shadow: 0px 6px 4px 0px whitesmoke;
   background: whitesmoke;
   .app-name {
-    padding: 4px 8px;
-    gap: 2px;
     font-weight: bold;
     font-size: 1.6rem;
   }
@@ -28,6 +26,7 @@ const classes = {
   justify-between
   py-3
   md:flex-row
+  gap-2
   `,
   nav: `
     flex
