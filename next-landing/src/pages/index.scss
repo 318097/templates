@@ -1,3 +1,5 @@
+$APP_PADDING: 20px;
+
 .btn {
   @apply flex items-center px-6 py-3 rounded-sm;
 }
@@ -25,18 +27,20 @@ h2 {
 }
 
 section {
-  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  // background: whitesmoke;
   .section-main {
-    @apply px-2 py-12 md:px-1;
+    padding: 86px $APP_PADDING;
     width: 100%;
   }
 }
 
 header .header-main,
 section .section-main,
-footer .footer-wrapper {
+footer .footer-main {
   @apply mx-auto max-w-screen-lg;
+  padding-left: $APP_PADDING;
+  padding-right: $APP_PADDING;
 }

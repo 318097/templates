@@ -25,17 +25,17 @@ export default function Index() {
   const getUI = ({ key }) => {
     switch (key) {
       case "intro":
-        return <Intro key={key} />;
+        return <Intro />;
       case "demo":
-        return <Demo key={key} />;
+        return <Demo />;
       case "features":
-        return <Features key={key} />;
+        return <Features />;
       case "general":
-        return <General key={key} />;
+        return <General />;
       case "subscribe":
-        return <Subscribe key={key} />;
+        return <Subscribe />;
       case "carousel":
-        return <Carousel key={key} />;
+        return <Carousel />;
       default:
         return null;
     }
@@ -58,21 +58,30 @@ export default function Index() {
 
       <main style={{ fontFamily }}>
         <Header />
-        {MENU.map(({ key, theme, useTheme }) => {
+        {MENU.map(({ key, theme, themeType = "WHITE", size = "FULL" }) => {
           const ui = getUI({ key });
-          const sectionStyles = useTheme
-            ? {
-                background: theme.background,
-              }
-            : {};
+          const sectionStyles = {
+            ...(themeType === "COLOR"
+              ? { background: theme.background }
+              : themeType === "GRAY"
+              ? { background: "whitesmoke" }
+              : { background: "white" }),
+            ...(size === "FULL"
+              ? { minHeight: "calc(100vh - 72px)" }
+              : {
+                  minHeight: "auto",
+                  paddingTop: "120px",
+                  paddingBottom: "120px",
+                }),
+          };
           return (
-            <section id={key} style={sectionStyles}>
+            <section id={key} key={key} style={sectionStyles}>
               {ui}
             </section>
           );
         })}
+        <Footer />
       </main>
-      <Footer />
       {config.IS_PROD && (
         <CrispWithNoSSR CRISP_WEBSITE_ID={config.CRISP_WEBSITE_ID} />
       )}

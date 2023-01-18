@@ -4,7 +4,10 @@ import styled from "styled-components";
 const { urls } = DATA;
 
 const StyledDemo = styled.div`
-  max-width: 720px;
+  iframe {
+    max-width: 720px;
+    margin: 0 auto;
+  }
 `;
 
 export default function Demo() {
