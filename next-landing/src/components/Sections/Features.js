@@ -61,6 +61,8 @@ const LIST_VIEW = css`
 `;
 
 const StyledFeatures = styled.div`
+  max-width: ${({ renderStyle }) =>
+    renderStyle === "LIST" ? "600px" : "100%"};
   .features-container {
     ${({ renderStyle }) => (renderStyle === "LIST" ? LIST_VIEW : CARD_VIEW)};
     .feature-item {

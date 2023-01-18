@@ -1,3 +1,5 @@
+@import "@codedrops/react-ui/dist/styles/colors.scss";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,6 +12,7 @@ $PRIMARY: #f56545;
 
 html,
 body {
+  color: $bar;
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -19,7 +22,8 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+  transition: 0.1s;
   &:hover {
-    text-decoration: underline;
+    color: $iron;
   }
 }

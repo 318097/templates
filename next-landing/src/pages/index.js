@@ -50,7 +50,7 @@ export default function Index() {
         <link
           rel="stylesheet"
           type="text/css"
-          href={`https://fonts.googleapis.com/css?family=${fontFamily}`}
+          href={`https://fonts.googleapis.com/css2?family=${fontFamily}:wght@300;400;500;700&display=swap}`}
           media="all"
         />
         {config.IS_PROD && <GA GA_ID={config.GA_ID} />}

@@ -37,9 +37,9 @@ section {
   }
 }
 
-header .header-main,
-section .section-main,
-footer .footer-main {
+.header-main,
+.section-main,
+.footer-main {
   @apply mx-auto max-w-screen-lg;
   padding-left: $APP_PADDING;
   padding-right: $APP_PADDING;

@@ -1,5 +1,5 @@
 import DATA from "../../DATA";
-// import Image from "next/image";
+import Image from "next/image";
 import { Button } from "../../lib/tailwind";
 const { description, tagline, urls, cta } = DATA;
 
@@ -39,7 +39,7 @@ export default function Intro() {
         </div>
       </div>
       <div className={classes.imageWrapper}>
-        <img src={urls.preview} className="" />
+        <img src={urls.preview} />
       </div>
     </div>
   );
