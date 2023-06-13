@@ -1,5 +1,5 @@
 const Home = ({ appLoading }) => {
-  return <div />;
+  return <div>Hello World</div>;
 };
 
 export default Home;

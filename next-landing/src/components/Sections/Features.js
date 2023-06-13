@@ -54,8 +54,32 @@ const LIST_VIEW = css`
         text-align: left;
       }
     }
-    .description {
+    .content-container {
       margin-left: 30px;
+      .description {
+        code {
+          font-weight: bold;
+          border-bottom: 1px dotted;
+        }
+
+        ol {
+          list-style: inside;
+        }
+      }
+      .preview {
+        margin-top: 10px;
+        max-width: 100%;
+        overflow: hidden;
+        padding: 5px;
+        border: 0.5px dashed white;
+        border-radius: 4px;
+        background: white;
+        box-shadow: 4px 4px 8px whitesmoke;
+        img {
+          max-width: 100%;
+          height: auto;
+        }
+      }
     }
   }
 `;
@@ -83,7 +107,7 @@ export default function Features() {
     <StyledFeatures className="section-main" renderStyle={renderStyle}>
       <Heading title={label} subTitle={subTitle} />
       <div className="features-container">
-        {list.map(({ title, description, id, iconType }) => {
+        {list.map(({ title, description, id, iconType, preview }) => {
           const featureHeader = (
             <>
               <div className="icon">{getIcon({ type: iconType })}</div>
@@ -99,10 +123,17 @@ export default function Features() {
               ) : (
                 featureHeader
               )}
-              <div
-                className="description"
-                dangerouslySetInnerHTML={{ __html: html }}
-              ></div>
+              <div className="content-container">
+                <div
+                  className="description"
+                  dangerouslySetInnerHTML={{ __html: html }}
+                ></div>
+                {!!preview && (
+                  <div className="preview">
+                    <img src={preview} />
+                  </div>
+                )}
+              </div>
             </div>
           );
         })}

@@ -1,15 +1,16 @@
 import { Fragment } from "react";
 import Head from "next/head";
 import Header from "../components/Header";
-import Intro from "../components/Sections/Intro";
-import General from "../components/Sections/General";
-import Features from "../components/Sections/Features";
-import Subscribe from "../components/Sections/Subscribe";
-import Demo from "../components/Sections/Demo";
+import Intro from "../components/sections/Intro";
+import General from "../components/sections/General";
+import Features from "../components/sections/Features";
+import Subscribe from "../components/sections/Subscribe";
+import Demo from "../components/sections/Demo";
 import Footer from "../components/Footer";
-import Carousel from "../components/Sections/Carousel";
+import Carousel from "../components/sections/Carousel";
 import config from "../config";
 import dynamic from "next/dynamic";
+import GA from "../lib/GA";
 
 const CrispWithNoSSR = dynamic(() => import("../lib/Crisp"), {
   ssr: false,

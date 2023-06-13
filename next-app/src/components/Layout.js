@@ -48,7 +48,7 @@ const Layout = ({ children }) => {
     }, 1000);
   }, []);
 
-  const header = (
+  return (
     <Fragment>
       <HeadTag />
       <DefaultSeo
@@ -66,12 +66,6 @@ const Layout = ({ children }) => {
         //   cardType: "summary_large_image",
         // }}
       />
-    </Fragment>
-  );
-
-  return (
-    <Fragment>
-      {header}
       <main style={mainStyles}>
         {React.cloneElement(children, { appLoading, setAppLoading })}
       </main>

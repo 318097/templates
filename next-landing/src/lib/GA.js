@@ -1,3 +1,5 @@
+import { Fragment } from "react";
+
 const GA = ({ GA_ID }) => (
   <Fragment>
     <script
